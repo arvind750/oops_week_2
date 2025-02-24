@@ -1,5 +1,5 @@
 class MobilePhone {
-    // Attributes
+     
     private String brand;
     private String model;
     private double price;

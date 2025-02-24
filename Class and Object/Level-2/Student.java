@@ -1,46 +1,50 @@
-package Level_2;
+// package object-oriented-programming.java-object-class.level2-problems;
 
-class Student {
-    // Attributes
+public class Student {
+    //taken a attributes
     String name;
-    int rollNumber;
+    int rollNo;
     int marks;
 
-    // Constructor
-    public Student(String name, int rollNumber, int marks) {
-        this.name = name;
-        this.rollNumber = rollNumber;
-        this.marks = marks;
+    //create a constructor 
+    Student(String name , int rollNo , int marks){
+        this.name=name;
+        this.rollNo=rollNo;
+        this.marks=marks;
     }
 
-    // Method to calculate grade
-    public char calculateGrade() {
-        if (marks >= 90) {
-            return 'A';
-        } else if (marks >= 80) {
-            return 'B';
-        } else if (marks >= 70) {
-            return 'C';
-        } else if (marks >= 60) {
-            return 'D';
-        } else if (marks >= 50) {
-            return 'E';
-        } else {
-            return 'F';
+    // calculate and check the grade
+    public void checkGrade(){
+        // check marks greater then 90 then return Grade A
+        if(marks > 90){
+            System.out.println("Student Grade is : A");
+        }
+        //Check marks greater then 80 then return Grade A
+        else if(marks > 80){
+            System.out.println("Student Grade is : B");
+        }
+        //check marks greater then 60 then return Grade A
+        else if(marks > 60){
+            System.out.println("Student Grade is : C");
+        }
+        else{
+            System.out.println("Fail");
         }
     }
 
-    // Method to display student details
-    public void display() {
-        System.out.println("Name of student: " + name);
-        System.out.println("Roll Number of student: " + rollNumber);
-        System.out.println("Marks: " + marks);
-        System.out.println("Grade: " + calculateGrade());
+    //method display
+    public void display(){
+        System.out.println("Student Name : "+name+"\nStudent RollNo : "+rollNo+"\nStudent Marks : "+marks);
     }
-
-    // Main method
     public static void main(String[] args) {
-        Student s1 = new Student("Arvind", 21, 100);
-        s1.display();
+        //create a object
+        Student s = new Student("Arvind",1221 , 86);
+
+        // then call the display() method
+        s.display();
+        System.out.println();
+        //then call the checkGrade() method
+        s.checkGrade();
+
     }
 }

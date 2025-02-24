@@ -1,54 +1,58 @@
-package Level_2;
+// package object-oriented-programming.java-object-class.level2-problems;
 
-// Movie class to store ticket details and perform booking
-class Movie {
-    private String movieName;
-    private String seatNumber;
-    private double price;
-    private boolean isBooked;
+import java.util.Scanner;
 
-    // Constructor to initialize ticket details
-    public Movie(String movieName, String seatNumber, double price) {
+public class MovieTicket {
+    String movieName;
+    int seatNumber;
+    int price;
+    boolean isBooked;
+
+    //take a constructor
+    MovieTicket(String movieName,int seatNumber,int price){
         this.movieName = movieName;
         this.seatNumber = seatNumber;
         this.price = price;
-        this.isBooked = false; // Initially, the seat is not booked
+        this.isBooked = false;
     }
-
-    // Method to book a ticket
-    public void bookTicket() {
-        if (!isBooked) {
+    //create a method book ticket
+    public void BookTicket(){
+        if(!isBooked){
             isBooked = true;
-            System.out.println("Ticket booked successfully for " + movieName + " (Seat: " + seatNumber + ").");
-            System.out.println("Total Price:" + price);
-        } else {
-            System.out.println("Sorry, Seat " + seatNumber + " is already booked.");
+            System.out.println("Ticket booked successfully for "+movieName+" at seat "+seatNumber);
+        }else{
+            System.out.println("seat : "+seatNumber+" is already booked");
         }
     }
 
-    // Method to display ticket details
-    public void displayTicketDetails() {
-        System.out.println("Ticket Details");
-        System.out.println("Movie: " + movieName);
-        System.out.println("Seat Number: " + seatNumber);
-        System.out.println("Price:" + price);
-        System.out.println("Booking Status: " + (isBooked ? "Booked" : "Available"));
+    //display the ticket
+    public void displayTicket(){
+        System.out.println("Movie : "+movieName);
+        System.out.println("Seat Number : "+seatNumber);
+        System.out.println("Price : "+price);
+        System.out.println("Status : "+(isBooked ? "Booked" : "Available"));
     }
-}
-
-// Main class to execute the ticket booking system
-public class MovieTicket {
     public static void main(String[] args) {
-        // Predefined ticket details
-        Movie ticket1 = new Movie("Interstellar", "12", 250.0);
-        Movie ticket2 = new Movie("Inception", "13", 300.0);
+        //create a object
+        Scanner sc = new Scanner(System.in);
 
-        // Booking tickets
-        ticket1.bookTicket();
-        ticket2.bookTicket();
+        System.out.print("Enter Movie Name : ");
+        String movieName = sc.next();
+        System.out.print("Enter Seat No : ");
+        int seatNumber = sc.nextInt();
+        System.out.print("Enter Price : ");
+        int price = sc.nextInt();
 
-        // Displaying ticket details
-        ticket1.displayTicketDetails();
-        ticket2.displayTicketDetails();
+        MovieTicket ticket = new MovieTicket(movieName,seatNumber,price);
+
+        //call the method on display ticket
+        System.out.println();
+        ticket.displayTicket();
+        System.out.println();
+        //call the method book ticket
+        ticket.BookTicket();
+        System.out.println();
+        //call the method display ticket
+        ticket.displayTicket();
     }
 }

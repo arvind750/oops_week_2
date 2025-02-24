@@ -1,68 +1,92 @@
-package Level_2;
+import java.util.ArrayList;
+import java.util.List;
 
-class ShoppingCart {
-    String itemName; // Name of the item
-    double price; // Price per unit of the item
-    int quantity; // Quantity of the item in the cart
+class CartItem {
+    String itemName;
+    double price;
+    int quantity;
 
-    // Constructor to initialize item details
-    ShoppingCart(String itemName, double price, int quantity) {
+    // Constructor
+    CartItem(String itemName, double price, int quantity) {
         this.itemName = itemName;
         this.price = price;
         this.quantity = quantity;
     }
 
-    // Method to add/update an item in the cart
-    public void addItem(String itemName, double price, int quantity) {
-        this.itemName = itemName;
-        this.price = price;
-        this.quantity = quantity;
+    // Method to calculate total price of the item
+    public double getTotalPrice() {
+        return price * quantity;
     }
 
-    // Method to remove an item from the cart
-    public void removeItem() {
-        this.itemName = null; // Setting item name to null to indicate no item
-        this.price = 0; // Reset price to 0
-        this.quantity = 0; // Reset quantity to 0
-    }
-
-    // Method to display item details and total cost
-    public void display() {
-        if (itemName == null) {
-            System.out.println("No items in the cart.");
-        } else {
-            System.out.println("Item Name: " + itemName);
-            System.out.println("Price: " + price);
-            System.out.println("Quantity: " + quantity);
-            System.out.println("Total Cost: " + (price * quantity));
-        }
-        System.out.println("---------------------------");
+    // Method to display item details
+    public void displayItem() {
+        System.out.println("Item: " + itemName + " | Price: " + price + " | Quantity: " + quantity + " | Total: " + getTotalPrice());
     }
 }
 
-// Main class to execute the program
+class ShoppingCart {
+    private List<CartItem> items; // List to store multiple cart items
+
+    // Constructor to initialize the cart
+    ShoppingCart() {
+        items = new ArrayList<>();
+    }
+
+    // Method to add an item to the cart
+    public void addItem(String itemName, double price, int quantity) {
+        items.add(new CartItem(itemName, price, quantity));
+        System.out.println(itemName + " added to the cart.");
+    }
+
+    // Method to remove an item from the cart by name
+    public void removeItem(String itemName) {
+        boolean removed = items.removeIf(item -> item.itemName.equalsIgnoreCase(itemName));
+        if (removed) {
+            System.out.println(itemName + " removed from the cart.");
+        } else {
+            System.out.println("Item not found in the cart.");
+        }
+    }
+
+    // Method to display the cart contents
+    public void displayCart() {
+        if (items.isEmpty()) {
+            System.out.println("The cart is empty.");
+        } else {
+            System.out.println("\nShopping Cart:");
+            for (CartItem item : items) {
+                item.displayItem();
+            }
+            System.out.println("Total Cost: $" + getTotalCost());
+        }
+        System.out.println("---------------------------");
+    }
+
+    // Method to calculate total cart cost
+    public double getTotalCost() {
+        double total = 0;
+        for (CartItem item : items) {
+            total += item.getTotalPrice();
+        }
+        return total;
+    }
+}
+
+// Main class to test ShoppingCart
 public class ShoppingCartSystem {
     public static void main(String[] args) {
-        // Creating objects with initial items
-        ShoppingCart cart1 = new ShoppingCart("Laptop", 50000, 2);
-        ShoppingCart cart2 = new ShoppingCart("Mobile", 20000, 3);
+        ShoppingCart cart = new ShoppingCart();
 
-        // Displaying initial cart details
-        cart1.display();
+        // Adding items to the cart
+        cart.addItem("Laptop", 50000, 1);
+        cart.addItem("Mouse", 1000, 2);
+        cart.displayCart();
 
-        // Adding a new item to the first cart
-        cart1.addItem("Mobile", 20000, 3);
-        cart1.display();
+        // Removing an item
+        cart.removeItem("Mouse");
+        cart.displayCart();
 
-        // Removing an item from the first cart
-        cart1.removeItem();
-        cart1.display();
-
-        // Displaying the second cart details
-        cart2.display();
-
-        // Updating the second cart with a new item
-        cart2.addItem("Laptop", 50000, 2);
-        cart2.display();
+        // Trying to remove an item that isn't in the cart
+        cart.removeItem("Keyboard");
     }
 }
