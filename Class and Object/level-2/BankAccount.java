@@ -33,8 +33,8 @@ public class BankAccount {
     }
     public static void main(String[] args) {
         BankAccount b = new BankAccount();
-        b.accountHolder = "Deepak";
-        b.accountNumber = 1345678;
+        b.accountHolder = "Arvind";
+        b.accountNumber = 2111981221;
         b.balance = 2000;
 
         b.display();

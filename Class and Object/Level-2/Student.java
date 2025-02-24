@@ -39,6 +39,7 @@ public class Student {
     public static void main(String[] args) {
         //create a object
         Student s = new Student("Arvind",1221 , 86);
+        Student s1 = new Student("Adrash",1321 , 90);
 
         // then call the display() method
         s.display();
