@@ -22,7 +22,7 @@ class Book {
     // Main method
     public static void main(String[] args) {
         // Creating a Book object
-        Book book1 = new Book("The Java Handbook", "Patrick Naughton", 599.99);
+        Book book1 = new Book("Fake Love ??", "Arvind", 499);
         
         // Displaying the details
         book1.displayDetails();

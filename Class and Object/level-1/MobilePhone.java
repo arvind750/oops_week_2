@@ -22,8 +22,8 @@ class MobilePhone {
     // Main method
     public static void main(String[] args) {
         // Creating MobilePhone objects
-        MobilePhone phone1 = new MobilePhone("Samsung", "Galaxy S23", 999.99);
-        MobilePhone phone2 = new MobilePhone("Apple", "iPhone 15 Pro", 1199.99);
+        MobilePhone phone1 = new MobilePhone("Oneplus", "One plus 10T", 50000);
+        MobilePhone phone2 = new MobilePhone("Apple", "iPhone 15 Pro", 12700.99);
 
         // Displaying the details
         phone1.displayDetails();
