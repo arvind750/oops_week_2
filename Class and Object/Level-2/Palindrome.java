@@ -39,7 +39,7 @@ public class Palindrome {
     public static void main(String[] args) {
         // Predefined test cases
         PalindromeChecker checker1 = new PalindromeChecker("nitin");
-        PalindromeChecker checker2 = new PalindromeChecker("ayushi");
+        PalindromeChecker checker2 = new PalindromeChecker("Gagan");
         PalindromeChecker checker3 = new PalindromeChecker("madam");
 
         // Displaying results
