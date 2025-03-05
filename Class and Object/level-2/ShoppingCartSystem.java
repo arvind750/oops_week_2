@@ -87,7 +87,6 @@ public class ShoppingCartSystem {
         cart.displayCart();
 
         // Trying to remove an item that isn't in the cart
-        cart.removeItem("Keyboard");
-        
+        cart.removeItem("Keyboard");      
     }
 }
